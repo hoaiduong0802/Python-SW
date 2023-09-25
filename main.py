@@ -1,2 +1,2 @@
-print(f"Hello Word")
-print (f"testing Version 2")
+import base._import
+
