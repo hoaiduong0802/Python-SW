@@ -1,6 +1,8 @@
+import sys
+import tkinter as tk
+from tkinter import ttk
+import pygetwindow as gw
+import pyautogui
 import cv2
 import numpy as np
-import pyautogui
-import pygetwindow as gw
-import autoit
 import time
