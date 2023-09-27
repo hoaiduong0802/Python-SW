@@ -21,7 +21,6 @@ def activate_selected_window_and_run():
         search_result = search_image()
         if search_result:
             print("Tìm thấy ảnh, kết thúc vòng lặp.")
-            sys.exit()  # Thoát khỏi chương trình sau khi tìm thấy ảnh
         else:
             print("Vòng lặp kết thúc mà không tìm thấy ảnh.")
     else:
@@ -29,9 +28,8 @@ def activate_selected_window_and_run():
 
 def search_image():
     source_image_path = 'data/img/battle/1920x1080/winAH_giant.png'
-    endP_1 = False  # Biến đánh dấu xem vòng lặp đã kết thúc chưa
-
-    while not endP_1:
+    
+    while True:  # Sử dụng vòng lặp vô hạn
         # Các bước tìm kiếm ảnh giữ nguyên như trước
         app_window = gw.getActiveWindow()
         if app_window:
@@ -45,9 +43,7 @@ def search_image():
                 min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
                 if max_val >= threshold:
                     print("Tìm thấy ảnh tại vị trí:", max_loc)
-                    endP_1 = True  # Kết thúc vòng lặp
-                else:
-                    print("Không tìm thấy ảnh.")
+                    return True  # Trả về True khi tìm thấy ảnh
             else:
                 print(f"Không thể đọc tệp hình ảnh nguồn: {source_image_path}")
         else:
@@ -55,7 +51,11 @@ def search_image():
 
         time.sleep(2)  # Chờ 2 giây trước khi tìm kiếm lại
 
-    return endP_1
+    return False  # Trả về False nếu không tìm thấy ảnh sau khi vòng lặp kết thúc (ít khi xảy ra)
+
+
+
+
 
 # Tạo cửa sổ giao diện
 root = tk.Tk()
@@ -65,7 +65,7 @@ root.geometry("300x200")
 # Tạo danh sách chọn
 app_label = tk.Label(root, text="Chọn cửa sổ ứng dụng:")
 app_label.pack(pady=10)
-app_list = ["Summoners War - MuMu Player", "Other App 1", "Other App 2"]  # Thay thế bằng danh sách các ứng dụng của bạn
+app_list = ["Summoners War - MuMu Player"]  # Thay thế bằng danh sách các ứng dụng của bạn
 app_listbox = ttk.Combobox(root, values=app_list)
 app_listbox.pack(pady=10)
 app_listbox.set(app_list[0])  # Đặt giá trị mặc định

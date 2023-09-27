@@ -8,3 +8,4 @@ import numpy as np
 import time
 import autoit
 import subprocess
+import keyboard
