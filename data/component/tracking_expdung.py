@@ -27,7 +27,7 @@ def activate_selected_window_and_run():
         app_label.config(text=f"Không tìm thấy cửa sổ: {selected_app}")
 
 def search_image():
-    source_image_path = 'data/img/battle/1920x1080/winAH_giant.png'
+    source_image_path = 'data/img/battle/1366x768/winAH_giant.png'
     
     while True:  # Sử dụng vòng lặp vô hạn
         # Các bước tìm kiếm ảnh giữ nguyên như trước
@@ -56,7 +56,7 @@ def search_image():
 
 def action_mouseclick():
     autoit_exe_path = "C:\\Program Files (x86)\\AutoIt3\\AutoIt3.exe"
-    autoit_script = r"C:\Users\hongt\Desktop\Python-SW\data\component\handle_mouse\progrEle.au3"
+    autoit_script = r"C:\Users\User\Desktop\Python-SW\data\component\handle_mouse\progrEle.au3"
     
     # Thực thi mã AutoIt bằng subprocess
     subprocess.run([autoit_exe_path, autoit_script])
