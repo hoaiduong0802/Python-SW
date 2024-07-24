@@ -9,3 +9,5 @@ import time
 import autoit
 import subprocess
 import keyboard
+import pyscreeze
+import PIL

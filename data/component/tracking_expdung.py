@@ -71,10 +71,17 @@ root.geometry("300x200")
 # Tạo danh sách chọn
 app_label = tk.Label(root, text="Chọn cửa sổ ứng dụng:")
 app_label.pack(pady=10)
-app_list = ["Summoners War - MuMu Player"]  # Thay thế bằng danh sách các ứng dụng của bạn
-app_listbox = ttk.Combobox(root, values=app_list)
+
+# Lấy danh sách các cửa sổ đang mở
+open_windows = [win.title for win in gw.getAllWindows() if win.title]
+
+# Tạo danh sách chọn từ danh sách các cửa sổ đang mở
+app_listbox = ttk.Combobox(root, values=open_windows)
 app_listbox.pack(pady=10)
-app_listbox.set(app_list[0])  # Đặt giá trị mặc định
+
+# Đặt giá trị mặc định nếu có cửa sổ đang mở
+if open_windows:
+    app_listbox.set(open_windows[0])
 
 # Tạo nút kích hoạt
 activate_button = tk.Button(root, text="Kích hoạt cửa sổ và chạy", command=activate_selected_window_and_run)
